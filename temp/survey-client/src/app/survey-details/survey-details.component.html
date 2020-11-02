@@ -1,0 +1,18 @@
+<div *ngIf="survey !== undefined && results !== undefined">
+    <h2> Survey Details for {{survey.name}} </h2>
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>Survey Taker</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let result of results">
+            <td>{{result.takerId}}</td>
+            <td>{{result.score}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

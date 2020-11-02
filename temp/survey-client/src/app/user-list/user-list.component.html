@@ -1,0 +1,22 @@
+<h2> User List </h2>
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let user of users">
+            <td>{{user.username}}</td>
+            <td>{{user.emailId}}</td>
+            <td>
+                <button (click)="updateUser(user.id)" class="btn btn-info">Update</button>
+                <button (click)="userDetails(user.id)" class="btn btn-success" style="margin-left: 10px">View</button>
+                <button (click)="deleteUser(user.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

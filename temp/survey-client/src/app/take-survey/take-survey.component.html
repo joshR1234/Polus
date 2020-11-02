@@ -1,0 +1,33 @@
+<div *ngIf="survey !== undefined && questions !== undefined">
+    <h1>{{survey.name}}</h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div *ngFor = "let question of questions; index as i;">
+            <p>Question {{i+1}}: {{question.prompt}}</p>
+            <div *ngIf="question.type == 'Multiple Choice'" id="{{'question'+i}}">
+                <div *ngFor = "let option of questionOptions[i]; index as j;">
+                    <input type="radio" id="{{j}}" name="qAnswer{{i}}" >
+                    <label for="{{j}}" id="qAnswer{{i}}Label{{j}}" style="margin-left: 5px;">{{option}}</label>
+                </div>
+            </div>
+            <div *ngIf="question.type == 'True False'">
+                <p>testB</p>
+            </div>
+        </div>
+
+        <br>
+        <div *ngIf="username == 'anon'" class="col-xs-4" style="padding-left: 5px;">
+            <label>Optional Email:</label>
+            <input [class.is-invalid]="primEmail.invalid && primEmail.touched" type="email" class="form-control"
+                formControlName="email" />
+
+            <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+                <small *ngIf="primEmail.errors?.required" class="text-danger">Primary email is required</small>
+                <!--question mark(?) is a safe navigation operator-->
+                <small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+            </div>
+        </div>
+        <br><br><br><br>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+    
+</div>

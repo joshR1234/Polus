@@ -1,0 +1,10 @@
+<div *ngIf="survey !== undefined">
+    <h1>You've completed your survey!</h1>
+    <h2>Survey Details</h2>
+    <h4>Survey name: {{survey.name}}</h4>
+    <h4>Survey owner: {{survey.owner}}</h4>
+    <h4>Your score: {{score}}</h4>
+
+    <h4>Thank you for taking the survey!</h4>
+    <a class="nav-link" routerLink="/survey-list">Why not take another?</a>
+</div>

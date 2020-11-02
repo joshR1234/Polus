@@ -1,0 +1,18 @@
+<h2> Survey List </h2>
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>Owner</th>
+            <th>Survey</th>
+            <th *ngIf="isLoggedIn">Survey Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let survey of surveys">
+            <td>{{survey.owner}}</td>
+            <td><a href="/take-survey/{{survey.url}}" class="nav-link">{{survey.name}}</a></td>
+            <td *ngIf="survey.owner == 'anon' && isLoggedIn"><a href="/survey-details/{{survey.url}}" class="nav-link">Survey Details</a></td>
+        </tr>
+    </tbody>
+</table>
